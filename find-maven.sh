@@ -12,7 +12,9 @@
 #          1. If MAVEN_HOME is set, use that
 #          2. If mvn can be found by the script, grab the value from 
 #             mvn --version
-#          3. Fail with a hopefully helpful error message
+#          3. If mvn3 can be found by the script, grab the value from 
+#             mvn3 --version
+#          4. Fail with a hopefully helpful error message
 
 set -e
 set -u
@@ -28,6 +30,13 @@ fi
 if command -v mvn > /dev/null 2>&1
 then
   mvn --version | grep "Maven home" | cut -d" " -f3
+  exit 0
+fi
+
+# Third choice: Ask mvn3
+if command -v mvn3 > /dev/null 2>&1
+then
+  mvn3 --version | grep "Maven home" | cut -d" " -f3
   exit 0
 fi
 
