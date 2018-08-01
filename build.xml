@@ -43,7 +43,7 @@
 
 	<!-- Dynamically set maven.home with find-maven.sh -->
 	<exec executable="/bin/sh" outputproperty="maven.home">
-		<arg line="./find-maven.sh"/>
+		<arg line="./src/scripts/bash/find-maven.sh"/>
 	</exec>
 
     <!-- Configure the maven2 ant tasks -->
